@@ -7,6 +7,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const dbConnect = require("./src/config/dbConnect");
 const { PORT } = require("./src/utilities/constant");
+const route = require("./src/routes/routes");
 
 const app = express()
 
@@ -22,6 +23,15 @@ app.use(limiter)
 
 // DataBase Connection
 dbConnect();
+
+// Routes
+app.use("/", route)
+app.use((err,req,res,next)=>{
+  res.status(401).json({
+    success: false,
+    message: err.message,
+  });
+})
 
 // Server Configuration
 app.listen(PORT, () => {
