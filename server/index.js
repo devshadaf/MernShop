@@ -6,8 +6,9 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const dbConnect = require("./src/config/dbConnect");
+const { PORT } = require("./src/utilities/constant");
 
-const PORT=process.env.PORT
 const app = express()
 
 // Middlewares
@@ -21,7 +22,8 @@ app.use(express.json());
 const limiter= rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter)
 
-
+// DataBase Connection
+dbConnect();
 
 // Server Configuration
 app.listen(PORT, () => {
