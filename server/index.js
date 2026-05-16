@@ -17,6 +17,7 @@ app.use(cors())
 app.use(helmet())
 app.use(hpp())
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const limiter= rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter)
