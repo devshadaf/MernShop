@@ -6,7 +6,7 @@ const DataSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    store_password: {
+    store_passwd: {
       type: String,
       required: true,
     },
