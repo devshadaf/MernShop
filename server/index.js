@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const dbConnect = require("./src/config/dbConnect");
 const { PORT } = require("./src/utilities/constant");
 const route = require("./src/routes/routes");
+const path=require("path")
 
 const app = express()
 
@@ -32,6 +33,11 @@ app.use((err,req,res,next)=>{
     success: false,
     message: err.message,
   });
+})
+
+app.use(express.static("client/dist"))
+app.get("/{*any}",(req,res)=>{
+  res.sendFile(path.resolve(__dirname,"client","dist","index.html"))
 })
 
 // Server Configuration
