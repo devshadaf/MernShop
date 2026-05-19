@@ -30,7 +30,7 @@ const DataSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    int_url: {
+    init_url: {
       type: String,
       required: true,
     },
