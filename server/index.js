@@ -26,7 +26,7 @@ app.use(limiter)
 dbConnect();
 
 // Routes
-app.use("/", route)
+app.use("/api/v1", route)
 app.use((err,req,res,next)=>{
   res.status(401).json({
     success: false,
