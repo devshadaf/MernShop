@@ -1,6 +1,8 @@
 const express=require("express");
 const { getProductBrandList, getProductCategoryList, getProductSliderList, getProductListByBrand, getProductListByCategory, getProductListBySmilier, getProductListByKeyword, getProductListByRemark, getProductDetails, getProductReviewList } = require("../controller/product.controller");
 const { getProductBrandList, getProductCategoryList, getProductSliderList, getProductListByBrand, getProductListByCategory, getProductListBySmilier, getProductListByKeyword, getProductListByRemark, getProductDetails, getProductReviewList, handleCreateReview, handleProductByFilter } = require("../controller/product.controller");
+const { getUserLogin, getVerifiyLogin, getUserLogout } = require("../controller/user.controller");
+const auth = require("../middleware/auth");
 
 const express = require("express");
 const route=express.Router()
@@ -19,5 +21,9 @@ route.get("/ProductReviewList/:ProductID", getProductReviewList);
 route.get("/CreateReview/:ProductID", auth, handleCreateReview);
 route.post("/ProductListByFilter", handleProductByFilter)
 
+// User
+route.get("/UserLogin/:email", getUserLogin);
+route.get("/VerifyLogin/:email/:otp", getVerifiyLogin);
+route.get("/UserLogout", auth, getUserLogout);
 
 module.exports=route
