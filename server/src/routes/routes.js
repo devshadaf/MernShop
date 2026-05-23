@@ -4,6 +4,7 @@ const { getProductBrandList, getProductCategoryList, getProductSliderList, getPr
 const { getUserLogin, getVerifiyLogin, getUserLogout } = require("../controller/user.controller");
 const auth = require("../middleware/auth");
 const { handleSaveProfile, handleReadProfile } = require("../controller/profile.controller");
+const { handleSaveWishList, handleRemoveWishList, getAllWishList } = require("../controller/wishlist.controller");
 
 const express = require("express");
 const route=express.Router()
@@ -31,4 +32,9 @@ route.get("/UserLogout", auth, getUserLogout);
 route.post("/CreateProfile", auth, handleSaveProfile)
 route.post("/UpdateProfile", auth, handleSaveProfile)
 route.get("/ReadProfile", auth, handleReadProfile)
+
+// WishList
+route.post("/SaveWishList", auth, handleSaveWishList)
+route.post("/RemoveWishList", auth, handleRemoveWishList)
+route.get("/WishList", auth, getAllWishList)
 module.exports=route
