@@ -3,6 +3,7 @@ const { getProductBrandList, getProductCategoryList, getProductSliderList, getPr
 const { getProductBrandList, getProductCategoryList, getProductSliderList, getProductListByBrand, getProductListByCategory, getProductListBySmilier, getProductListByKeyword, getProductListByRemark, getProductDetails, getProductReviewList, handleCreateReview, handleProductByFilter } = require("../controller/product.controller");
 const { getUserLogin, getVerifiyLogin, getUserLogout } = require("../controller/user.controller");
 const auth = require("../middleware/auth");
+const { handleSaveProfile, handleReadProfile } = require("../controller/profile.controller");
 
 const express = require("express");
 const route=express.Router()
@@ -26,4 +27,8 @@ route.get("/UserLogin/:email", getUserLogin);
 route.get("/VerifyLogin/:email/:otp", getVerifiyLogin);
 route.get("/UserLogout", auth, getUserLogout);
 
+// Profile
+route.post("/CreateProfile", auth, handleSaveProfile)
+route.post("/UpdateProfile", auth, handleSaveProfile)
+route.get("/ReadProfile", auth, handleReadProfile)
 module.exports=route
