@@ -1,10 +1,11 @@
-const express=require("express");
-const { getProductBrandList, getProductCategoryList, getProductSliderList, getProductListByBrand, getProductListByCategory, getProductListBySmilier, getProductListByKeyword, getProductListByRemark, getProductDetails, getProductReviewList } = require("../controller/product.controller");
 const { getProductBrandList, getProductCategoryList, getProductSliderList, getProductListByBrand, getProductListByCategory, getProductListBySmilier, getProductListByKeyword, getProductListByRemark, getProductDetails, getProductReviewList, handleCreateReview, handleProductByFilter } = require("../controller/product.controller");
 const { getUserLogin, getVerifiyLogin, getUserLogout } = require("../controller/user.controller");
 const auth = require("../middleware/auth");
 const { handleSaveProfile, handleReadProfile } = require("../controller/profile.controller");
 const { handleSaveWishList, handleRemoveWishList, getAllWishList } = require("../controller/wishlist.controller");
+const { handleSaveCartList, handleRemoveCartList, handleUpdateCartList, handleCartList } = require("../controller/cart.controller");
+const { handleCreateInvoice, handlePaymentSuccess, handlePaymentFail, handlePaymentCancel, handlePaymentIPN, getAllInvoiceList, getInvoiceProductList } = require("../controller/invoice.controller");
+const handleFeatureList = require("../controller/feature.controller");
 
 const express = require("express");
 const route=express.Router()
@@ -37,4 +38,24 @@ route.get("/ReadProfile", auth, handleReadProfile)
 route.post("/SaveWishList", auth, handleSaveWishList)
 route.post("/RemoveWishList", auth, handleRemoveWishList)
 route.get("/WishList", auth, getAllWishList)
+
+// CartList
+route.post("/SaveCartList", auth, handleSaveCartList);
+route.get("/RemoveCartList/:CartID", auth, handleRemoveCartList);
+route.post("/UpdateCartList/:CartID", auth, handleUpdateCartList);
+route.get("/CartList", auth, handleCartList)
+
+// Invoice & Payment
+route.get("/CreateInvoice",auth,handleCreateInvoice)
+route.get("/InvoiceList",auth,getAllInvoiceList)
+route.get("/InvoiceProductList/:invoice_id",auth,getInvoiceProductList)
+
+route.post("/PaymentSuccess/:trans_id", handlePaymentSuccess);
+route.post("/PaymentFail/:trans_id", handlePaymentFail);
+route.post("/PaymentCancel/:trans_id", handlePaymentCancel);
+route.post("/PaymentIPN/:trans_id", handlePaymentIPN);
+
+// FetaureList
+route.get("/FeatureList", handleFeatureList);
+
 module.exports=route
