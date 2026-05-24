@@ -487,10 +487,10 @@ const handleProductByFilter = async (req, res, next) => {
     const filterOption = {};
 
     if (BrandID) {
-      filterOption.BrandID = new objectId(BrandID);
+      filterOption.brandID = new objectId(BrandID);
     }
     if (CategoryID) {
-      filterOption.CategoryID = new objectId(CategoryID);
+      filterOption.categoryID = new objectId(CategoryID);
     }
 
     const MatchStage = { $match: filterOption };
