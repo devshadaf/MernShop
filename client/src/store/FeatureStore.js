@@ -7,6 +7,11 @@ const FeatureStore = create((set) => ({
     const data = await axios.get("/api/v1/FeatureList");
     set({ FeatureList: data.data });
   },
+  LegalDetails:null,
+  getLegalDetail:async(type)=>{
+    const data = await axios.get(`/api/v1/Legal/${type}`);
+    set({ LegalDetails: data.data });
+  }
 }));
 
 export default FeatureStore;
