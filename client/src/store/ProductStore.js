@@ -20,34 +20,35 @@ const ProductStore = create((set) => ({
     set({ ProductSliderList: data.data });
   },
 
-  ProductListByBrand: null,
+  ProductList: null,
   getProductListByBrand: async (id) => {
     const data = await axios.get(`/api/v1/ProductListByBrand/${id}`);
-    set({ ProductListByBrand: data.data });
+    set({ ProductList: data.data });
   },
 
-  ProductListByCategory: null,
   getProductListByCategory: async (id) => {
     const data = await axios.get(`/api/v1/ProductListByCategory/${id}`);
-    set({ ProductListByCategory: data.data });
+    set({ ProductList: data.data });
   },
 
-  ProductListBySmilier: null,
   getProductListBySmilier: async (id) => {
     const data = await axios.get(`/api/v1/ProductListBySmilier/${id}`);
-    set({ ProductListBySmilier: data.data });
+    set({ ProductList: data.data });
   },
 
-  ProductListByKeyword: null,
+  SearchValue: "",
+  setSearchValue: (value) => {
+    set({ SearchValue: value });
+  },
+
   getProductListByKeyword: async (keyword) => {
     const data = await axios.get(`/api/v1/ProductListByKeyword/${keyword}`);
-    set({ ProductListByKeyword: data.data });
+    set({ ProductList: data.data });
   },
 
-  ProductListByRemark: null,
   getProductListByRemark: async (remark) => {
     const data = await axios.get(`/api/v1/ProductListByRemark/${remark}`);
-    set({ ProductListByRemark: data.data });
+    set({ ProductList: data.data });
   },
 
   ProductDetails: null,
@@ -61,6 +62,12 @@ const ProductStore = create((set) => ({
     const data = await axios.get(`/api/v1/ProductReviewList/${id}`);
     set({ ProductReviewList: data.data });
   },
+
+  getFilterProductList:async(reqBody)=>{
+    const res = await axios.post(`/api/v1/ProductListByFilter`, reqBody);
+    set({ ProductList: res.data });
+  }
+
 }));
 
 export default ProductStore
