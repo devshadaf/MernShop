@@ -5,7 +5,7 @@ const { handleSaveProfile, handleReadProfile } = require("../controller/profile.
 const { handleSaveWishList, handleRemoveWishList, getAllWishList } = require("../controller/wishlist.controller");
 const { handleSaveCartList, handleRemoveCartList, handleUpdateCartList, handleCartList } = require("../controller/cart.controller");
 const { handleCreateInvoice, handlePaymentSuccess, handlePaymentFail, handlePaymentCancel, handlePaymentIPN, getAllInvoiceList, getInvoiceProductList } = require("../controller/invoice.controller");
-const handleFeatureList = require("../controller/feature.controller");
+const { handleFeatureList,handleLegal} = require("../controller/feature.controller");
 
 const express = require("express");
 const route=express.Router()
@@ -57,5 +57,6 @@ route.post("/PaymentIPN/:trans_id", handlePaymentIPN);
 
 // FetaureList
 route.get("/FeatureList", handleFeatureList);
+route.get("/Legal/:type", handleLegal)
 
 module.exports=route
