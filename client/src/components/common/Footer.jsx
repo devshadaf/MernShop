@@ -5,23 +5,28 @@ const Footer = () => {
   return (
     <>
       <div>
-        <div className="section-bottom shadow-sm bg-light">
+        <div className="section-bottom shadow-sm bg-white">
           <div className="container py-5">
             <div className="row">
               <div className="col-md-4">
                 <h1 className="fs-5 mb-3">Legals</h1>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/about">
                     About
                   </Link>
                 </p>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/privacy">
+                    Privacy Policy
+                  </Link>
+                </p>
+                <p className="my-2">
+                  <Link className="nav-link" to="/refund">
                     Refund Policy
                   </Link>
                 </p>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/terms">
                     Terms
                   </Link>
                 </p>
@@ -29,17 +34,17 @@ const Footer = () => {
               <div className="col-md-4">
                 <h1 className="fs-5 mb-3">Information</h1>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/howtobuy">
                     How to buy
                   </Link>
                 </p>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/contact">
                     Contact
                   </Link>
                 </p>
                 <p className="my-2">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/complain">
                     Complain
                   </Link>
                 </p>
@@ -56,7 +61,9 @@ const Footer = () => {
           </div>
         </div>
         <div className="bg-dark py-3 text-center">
-          <p className="text-white bodySmal">All Rights Reserved. Developed by devShadaf </p>
+          <p className="text-white bodySmal">
+            All Rights Reserved. Developed by devShadaf{" "}
+          </p>
         </div>
       </div>
     </>
