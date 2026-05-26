@@ -1,5 +1,5 @@
 const { getProductBrandList, getProductCategoryList, getProductSliderList, getProductListByBrand, getProductListByCategory, getProductListBySmilier, getProductListByKeyword, getProductListByRemark, getProductDetails, getProductReviewList, handleCreateReview, handleProductByFilter } = require("../controller/product.controller");
-const { getUserLogin, getVerifiyLogin, getUserLogout } = require("../controller/user.controller");
+const { getUserLogin, getVerifiyLogin, getUserLogout, getAuthVerify } = require("../controller/user.controller");
 const auth = require("../middleware/auth");
 const { handleSaveProfile, handleReadProfile } = require("../controller/profile.controller");
 const { handleSaveWishList, handleRemoveWishList, getAllWishList } = require("../controller/wishlist.controller");
@@ -27,6 +27,7 @@ route.post("/ProductListByFilter", handleProductByFilter)
 // User
 route.get("/UserLogin/:email", getUserLogin);
 route.get("/VerifyLogin/:email/:otp", getVerifiyLogin);
+route.get("/authVerify",auth, getAuthVerify)
 route.get("/UserLogout", auth, getUserLogout);
 
 // Profile
