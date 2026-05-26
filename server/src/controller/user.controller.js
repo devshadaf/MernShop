@@ -2,7 +2,6 @@ const UserModel = require("../models/user.model");
 const sendEmail = require("../service/Email.service");
 const { EncodeToken } = require("../service/Token.service");
 
-
 const getUserLogin=async(req,res,next)=>{
     try {
         const email=req.params.email
@@ -30,29 +29,28 @@ const getUserLogin=async(req,res,next)=>{
 const getVerifiyLogin = async (req, res, next) => {
     try {
         const {email,otp}=req.params
-        const total=await UserModel.findOne({email,otp}).countDocuments()
+        const user=await UserModel.findOne({email,otp})
 
-        if(total==1){
-            const user=await UserModel.findOne({email})
-            const token = EncodeToken(user);
+        if (user) {
+          const user = await UserModel.findOne({ email });
+          const token = EncodeToken(user);
 
-            res.cookie("token", token, {
-              expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-              httpOnly: true,
-            });
+          res.cookie("token", token, {
+            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+            httpOnly: true,
+          });
 
-          await UserModel.updateOne({email},{$set:{otp:0}})
+          await UserModel.updateOne({ email }, { $set: { otp: 0 } });
 
-            return res.status(200).json({
-              success: true,
-              message: "Login Successfull",
-            });
-        }
-        else{
-            return res.status(400).json({
-                success:false,
-                message:"Invalid Request"
-            })
+          return res.status(200).json({
+            success: true,
+            message: "Login Successfull",
+          });
+        } else {
+          return res.status(400).json({
+            success: false,
+            message: "Invalid Request",
+          });
         }
 
     } catch (error) {
@@ -77,4 +75,16 @@ const getUserLogout = async (req, res, next) => {
     }
 };
 
-module.exports = { getUserLogin, getVerifiyLogin, getUserLogout };
+const getAuthVerify = (req, res) => {
+  return res.status(200).json({
+    success: true,
+    user: req.user,
+  });
+};
+
+module.exports = {
+  getUserLogin,
+  getVerifiyLogin,
+  getUserLogout,
+  getAuthVerify,
+};
