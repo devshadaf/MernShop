@@ -17,7 +17,7 @@ const SliderSkeleton = () => {
             autoplay
               loop
               src={imgJson}
-              className="w-75"
+              className="w-50"
             />
           </div>
         </div>
