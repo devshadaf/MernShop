@@ -4,7 +4,6 @@ import LegalSkeleton from "../skeleton/Legal-Skeleton";
 
 const LegalDetail = () => {
     const { LegalDetails } = FeatureStore();
-    console.log(LegalDetails)
     if (!LegalDetails) {
       return <LegalSkeleton />;
     }
