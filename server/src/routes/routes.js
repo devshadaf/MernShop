@@ -21,7 +21,7 @@ route.get("/ProductListByKeyword/:Keyword", getProductListByKeyword);
 route.get("/ProductListByRemark/:Remark", getProductListByRemark);
 route.get("/ProductDetails/:ProductID", getProductDetails);
 route.get("/ProductReviewList/:ProductID", getProductReviewList);
-route.get("/CreateReview/:ProductID", auth, handleCreateReview);
+route.post("/CreateReview/:ProductID", auth, handleCreateReview);
 route.post("/ProductListByFilter", handleProductByFilter)
 
 // User
