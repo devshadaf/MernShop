@@ -66,6 +66,10 @@ body {
     font-size: 14px;
 }
 
+.cursor-pointer{
+    cursor: pointer;
+}
+
 .product-img-sm{
     width: 50px;
     height: auto;
@@ -84,8 +88,7 @@ body {
 
 
 .section{
-    margin-top: 80px !important;
-    margin-bottom: 40px !important;
+    margin-top: 60px !important;
 }
 .section-bottom{
     margin-top: 80px !important;
@@ -134,8 +137,16 @@ body {
     box-shadow: 0 12px 24px -24px rgba(8,31,77,.8) !important;
 }
 
+.image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg
+ {
+    height: 50px !important;
+    width: 40px !important;
+}
 
-
+.image-gallery-fullscreen-button .image-gallery-svg, .image-gallery-play-button .image-gallery-svg {
+    height: 25px !important;
+    width: 25px !important;
+}
 
 
 .headline-1 {
@@ -169,7 +180,6 @@ body {
 .hero-bg{
     background: url("../images/hero-bg.svg");
     background-size: cover;
-    min-height: 80vh;
 }
 
 
