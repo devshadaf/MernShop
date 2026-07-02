@@ -543,7 +543,6 @@ const handleProductByFilter = async (req, res, next) => {
 
     const projectionStage = {
       $project: {
-        _id: 0,
         categoryID: 0,
         brandID: 0,
         createdAt: 0,
