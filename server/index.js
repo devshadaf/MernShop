@@ -35,9 +35,9 @@ app.use((err,req,res,next)=>{
   });
 })
 
-app.use(express.static("client/dist"))
+app.use(express.static(path.join(__dirname, "../client/dist")));
 app.get("/{*any}",(req,res)=>{
-  res.sendFile(path.resolve(__dirname,"client","dist","index.html"))
+  res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
 })
 
 // Server Configuration
