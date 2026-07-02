@@ -69,10 +69,8 @@ const getAllWishList = async (req, res, next) => {
 
       const projectionStage = {
         $project: {
-          _id: 0,
           userID: 0,
           createdAt: 0,
-          productID: 0,
           brandID: 0,
           updatedAt: 0,
           "product.categoryID":0,
